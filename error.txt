@@ -1,0 +1,58 @@
+(venv) PS D:\02_coding_projects\BCI-Test-repo> python train.py
+Choosing from all possible events
+Raw loaded: X.shape=(6300, 61, 200), classes=['rest' 'right_elbow_extension' 'right_elbow_flexion' 'right_hand_close'
+ 'right_hand_open' 'right_pronation' 'right_supination']
+  Warning: channel 'Fp1' not found in Ofner2017, skipping
+  Warning: channel 'Fp2' not found in Ofner2017, skipping
+  Warning: channel 'F7' not found in Ofner2017, skipping
+  Warning: channel 'F8' not found in Ofner2017, skipping
+  Warning: channel 'T7' not found in Ofner2017, skipping
+  Warning: channel 'T8' not found in Ofner2017, skipping
+  Warning: channel 'P7' not found in Ofner2017, skipping
+  Warning: channel 'P8' not found in Ofner2017, skipping
+  Warning: channel 'O1' not found in Ofner2017, skipping
+  Warning: channel 'O2' not found in Ofner2017, skipping
+Matched 9/19 channels: ['F3', 'Fz', 'F4', 'C3', 'Cz', 'C4', 'P3', 'Pz', 'P4']
+Binary labels: 1800 elbow intent, 4500 other/rest
+Final X shape: (6300, 9, 200)
+Train: 5040 trials | Val: 1260 trials
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Backbone frozen — only classification head will be trained
+Parameters: 7,602 trainable / 4,931,602 total
+Traceback (most recent call last):
+  File "D:\02_coding_projects\BCI-Test-repo\train.py", line 95, in <module>
+    main()
+  File "D:\02_coding_projects\BCI-Test-repo\train.py", line 84, in main
+    train_loss, train_acc = run_epoch(model, train_loader, device, criterion, optimizer)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\02_coding_projects\BCI-Test-repo\train.py", line 47, in run_epoch
+    logits = model(X_batch)
+             ^^^^^^^^^^^^^^
+  File "D:\02_coding_projects\BCI-Test-repo\venv\Lib\site-packages\torch\nn\modules\module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\02_coding_projects\BCI-Test-repo\venv\Lib\site-packages\torch\nn\modules\module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\02_coding_projects\BCI-Test-repo\venv\Lib\site-packages\braindecode\models\cbramod.py", line 253, in forward
+    return self.final_layer(out)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\02_coding_projects\BCI-Test-repo\venv\Lib\site-packages\torch\nn\modules\module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\02_coding_projects\BCI-Test-repo\venv\Lib\site-packages\torch\nn\modules\module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\02_coding_projects\BCI-Test-repo\venv\Lib\site-packages\torch\nn\modules\container.py", line 253, in forward
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "D:\02_coding_projects\BCI-Test-repo\venv\Lib\site-packages\torch\nn\modules\module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\02_coding_projects\BCI-Test-repo\venv\Lib\site-packages\torch\nn\modules\module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\02_coding_projects\BCI-Test-repo\venv\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (64x1800 and 3800x2)
